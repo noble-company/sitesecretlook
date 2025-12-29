@@ -47,23 +47,23 @@ const HeroSection = () => {
           willChange: 'transform'
         }}
       >
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
           {/* Main Logo */}
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl tracking-[0.15em] text-gold animate-fade-in">
+          <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-[0.15em] text-gold animate-fade-in">
             SECRET LOOK
           </h1>
 
           {/* Tagline */}
-          <p className="text-secondary/90 text-lg md:text-xl lg:text-2xl tracking-[0.2em] font-light uppercase animate-fade-in-delay-1">
+          <p className="text-secondary/90 text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.1em] sm:tracking-[0.2em] font-light uppercase animate-fade-in-delay-1 px-4 sm:px-0">
             Mestres em Alisamentos, Loiros e Morenas Iluminadas
           </p>
 
           {/* CTA Button */}
-          <div className="pt-8 animate-fade-in-delay-2">
+          <div className="pt-6 md:pt-8 animate-fade-in-delay-2">
             <Button
               variant="gold"
               size="lg"
-              className="text-base md:text-lg tracking-wide hover:scale-105 active:scale-95"
+              className="text-base md:text-lg tracking-wide hover:scale-105 active:scale-95 min-h-[48px]"
               onClick={handleScrollToContact}
             >
               Agende seu Horário

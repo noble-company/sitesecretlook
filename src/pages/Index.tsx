@@ -12,12 +12,19 @@ import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import ScrollToTop from "@/components/ScrollToTop";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "sonner";
 
 const Index = () => {
   return (
     <TooltipProvider>
-      <main className="min-h-screen bg-background">
-        <Header />
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="skip-link">
+        Saltar para conteúdo
+      </a>
+      
+      <Header />
+      
+      <main id="main-content" role="main" className="min-h-screen bg-background">
         <HeroSection />
         <AboutSection />
         <ServicesSection />
@@ -27,10 +34,12 @@ const Index = () => {
         <TestimonialsSection />
         <PartnersSection />
         <LocationSection />
-        <Footer />
-        <FloatingContact />
-        <ScrollToTop />
       </main>
+      
+      <Footer />
+      <FloatingContact />
+      <ScrollToTop />
+      <Toaster position="bottom-center" richColors />
     </TooltipProvider>
   );
 };

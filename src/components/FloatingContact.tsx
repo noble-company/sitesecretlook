@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { Phone, MessageCircle, X, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-const FloatingContact = () => {
+const FloatingContact = forwardRef<HTMLDivElement>((_, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -13,21 +14,25 @@ const FloatingContact = () => {
     try {
       await navigator.clipboard.writeText(phoneNumber);
       setCopied(true);
+      toast.success("Número copiado!", {
+        description: displayNumber,
+      });
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
+      toast.error("Erro ao copiar número");
     }
   };
 
   return (
-    <>
+    <div ref={ref}>
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-5 right-5 z-40 w-[70px] h-[70px] rounded-full bg-gold flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 active:scale-100 transition-all duration-300 group"
-        aria-label="Abrir contacto"
+        className="fixed bottom-5 right-5 z-40 w-[70px] h-[70px] min-h-[48px] rounded-full bg-gold flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 active:scale-100 transition-all duration-300 group cursor-pointer"
+        aria-label="Abrir opções de contacto"
       >
-        <Phone className="w-7 h-7 text-foreground group-hover:animate-pulse" />
+        <Phone className="w-7 h-7 text-foreground group-hover:animate-pulse" aria-hidden="true" />
       </button>
 
       {/* Modal Overlay */}
@@ -106,8 +111,10 @@ const FloatingContact = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
-};
+});
+
+FloatingContact.displayName = "FloatingContact";
 
 export default FloatingContact;
