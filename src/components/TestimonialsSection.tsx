@@ -96,18 +96,18 @@ const TestimonialsSection = () => {
             {/* Navigation Arrows */}
             <button
               onClick={goToPrevious}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 text-muted-foreground hover:text-gold hover:scale-110 transition-all duration-300 z-10"
-              aria-label="Previous testimonial"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 text-muted-foreground hover:text-gold hover:scale-110 transition-all duration-300 z-10 min-h-[48px] min-w-[48px] flex items-center justify-center cursor-pointer"
+              aria-label="Depoimento anterior"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft className="w-8 h-8" aria-hidden="true" />
             </button>
 
             <button
               onClick={goToNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 text-muted-foreground hover:text-gold hover:scale-110 transition-all duration-300 z-10"
-              aria-label="Next testimonial"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 text-muted-foreground hover:text-gold hover:scale-110 transition-all duration-300 z-10 min-h-[48px] min-w-[48px] flex items-center justify-center cursor-pointer"
+              aria-label="Próximo depoimento"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight className="w-8 h-8" aria-hidden="true" />
             </button>
 
             {/* Testimonial Card */}
@@ -147,7 +147,7 @@ const TestimonialsSection = () => {
             </div>
 
             {/* Dots Navigation */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-2 mt-8" role="tablist" aria-label="Depoimentos">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
@@ -158,12 +158,14 @@ const TestimonialsSection = () => {
                       setIsAnimating(false);
                     }, 200);
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 hover:scale-110 ${
+                  className={`h-2 rounded-full transition-all duration-300 hover:scale-110 min-h-[20px] min-w-[20px] flex items-center justify-center cursor-pointer ${
                     i === currentIndex
                       ? "bg-gold w-6"
                       : "bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2"
                   }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
+                  role="tab"
+                  aria-selected={i === currentIndex}
+                  aria-label={`Ver depoimento ${i + 1} de ${testimonials.length}`}
                 />
               ))}
             </div>

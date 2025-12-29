@@ -66,23 +66,25 @@ const Header = () => {
   return (
     <>
       <header
+        role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-primary/95 backdrop-blur-sm shadow-elegant" : "bg-primary"
         }`}
       >
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className="container mx-auto px-4 lg:px-12">
           <div className="flex items-center justify-between h-18 lg:h-22">
             {/* Logo */}
             <a
               href="#inicio"
               onClick={(e) => handleSmoothScroll(e, "#inicio")}
               className="font-display text-xl lg:text-2xl tracking-widest text-gold hover:text-gold-light transition-colors duration-300"
+              aria-label="Secret Look - Ir para início"
             >
               SECRET LOOK
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-10">
+            <nav className="hidden lg:flex items-center gap-10" aria-label="Navegação principal">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -98,8 +100,9 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-gold hover:text-gold-light transition-colors duration-300"
-              aria-label="Toggle menu"
+              className="lg:hidden p-2 min-h-[48px] min-w-[48px] flex items-center justify-center text-gold hover:text-gold-light transition-colors duration-300"
+              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

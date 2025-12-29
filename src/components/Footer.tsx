@@ -25,7 +25,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contacto" className="bg-primary text-secondary">
+    <footer id="contacto" role="contentinfo" className="bg-primary text-secondary">
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Column 1 - Brand */}

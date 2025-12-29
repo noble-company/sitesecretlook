@@ -121,11 +121,12 @@ const GallerySection = () => {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95 ${
+              className={`px-5 py-2 min-h-[44px] rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer ${
                 activeCategory === cat.id
                   ? "bg-gold text-foreground shadow-gold"
                   : "bg-transparent border border-border text-foreground/70 hover:border-gold hover:text-gold"
               }`}
+              aria-pressed={activeCategory === cat.id}
             >
               {cat.label}
             </button>
@@ -143,6 +144,15 @@ const GallerySection = () => {
               <div
                 className={`break-inside-avoid ${heightClasses[item.height as keyof typeof heightClasses]} relative rounded-lg overflow-hidden cursor-pointer group`}
                 onClick={() => openLightbox(index)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openLightbox(index);
+                  }
+                }}
+                aria-label={`Ver ${item.label} em tamanho grande`}
               >
                 {/* Placeholder with hover zoom */}
                 <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-muted flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
@@ -153,7 +163,7 @@ const GallerySection = () => {
 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                  <ZoomIn className="w-10 h-10 text-gold transform scale-75 group-hover:scale-100 transition-transform duration-300" />
+                  <ZoomIn className="w-10 h-10 text-gold transform scale-75 group-hover:scale-100 transition-transform duration-300" aria-hidden="true" />
                 </div>
               </div>
             </AnimateOnScroll>
@@ -168,18 +178,21 @@ const GallerySection = () => {
           onClick={closeLightbox}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Visualização de ${filteredItems[currentIndex]?.label}`}
         >
           {/* Close Button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-6 right-6 text-card hover:text-gold transition-colors z-10 hover:scale-110"
-            aria-label="Fechar"
+            className="absolute top-6 right-6 text-card hover:text-gold transition-colors z-10 hover:scale-110 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            aria-label="Fechar visualização"
           >
-            <X className="w-8 h-8" />
+            <X className="w-8 h-8" aria-hidden="true" />
           </button>
 
           {/* Counter */}
-          <div className="absolute top-6 left-6 text-card text-sm font-medium">
+          <div className="absolute top-6 left-6 text-card text-sm font-medium" aria-live="polite">
             {currentIndex + 1} / {filteredItems.length}
           </div>
 
@@ -189,10 +202,10 @@ const GallerySection = () => {
               e.stopPropagation();
               goToPrevious();
             }}
-            className="absolute left-4 lg:left-8 text-gold hover:scale-110 transition-transform z-10"
-            aria-label="Anterior"
+            className="absolute left-4 lg:left-8 text-gold hover:scale-110 transition-transform z-10 min-h-[48px] min-w-[48px] flex items-center justify-center"
+            aria-label="Imagem anterior"
           >
-            <ChevronLeft className="w-12 h-12" />
+            <ChevronLeft className="w-12 h-12" aria-hidden="true" />
           </button>
 
           <button
@@ -200,10 +213,10 @@ const GallerySection = () => {
               e.stopPropagation();
               goToNext();
             }}
-            className="absolute right-4 lg:right-8 text-gold hover:scale-110 transition-transform z-10"
-            aria-label="Próximo"
+            className="absolute right-4 lg:right-8 text-gold hover:scale-110 transition-transform z-10 min-h-[48px] min-w-[48px] flex items-center justify-center"
+            aria-label="Próxima imagem"
           >
-            <ChevronRight className="w-12 h-12" />
+            <ChevronRight className="w-12 h-12" aria-hidden="true" />
           </button>
 
           {/* Image Container */}
@@ -213,7 +226,7 @@ const GallerySection = () => {
             style={{ opacity: isLoading ? 0.5 : 1 }}
           >
             {isLoading && (
-              <Loader2 className="absolute w-10 h-10 text-gold animate-spin" />
+              <Loader2 className="absolute w-10 h-10 text-gold animate-spin" aria-label="A carregar" />
             )}
             <span className="text-gold font-display text-2xl">
               {filteredItems[currentIndex]?.label}
