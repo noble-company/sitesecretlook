@@ -9,22 +9,29 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import PartnersSection from "@/components/PartnersSection";
 import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
+import FloatingContact from "@/components/FloatingContact";
+import ScrollToTop from "@/components/ScrollToTop";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <SpecialtiesSection />
-      <GallerySection />
-      <TeamSection />
-      <TestimonialsSection />
-      <PartnersSection />
-      <LocationSection />
-      <Footer />
-    </main>
+    <TooltipProvider>
+      <main className="min-h-screen bg-background">
+        <Header />
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <SpecialtiesSection />
+        <GallerySection />
+        <TeamSection />
+        <TestimonialsSection />
+        <PartnersSection />
+        <LocationSection />
+        <Footer />
+        <FloatingContact />
+        <ScrollToTop />
+      </main>
+    </TooltipProvider>
   );
 };
 

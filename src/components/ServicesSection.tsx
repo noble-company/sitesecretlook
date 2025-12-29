@@ -1,5 +1,6 @@
 import { Sparkles, Palette, Sun, Sunrise, Scissors, User, Baby, Droplet, Zap, Hand } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -11,17 +12,17 @@ interface ServiceCardProps {
 const ServiceCard = ({ icon, title, description, isHighlighted }: ServiceCardProps) => {
   return (
     <div
-      className={`group p-6 lg:p-8 bg-card rounded-lg border transition-all duration-300 hover:shadow-elegant hover:-translate-y-1 ${
+      className={`group p-6 lg:p-8 bg-card rounded-lg border transition-all duration-300 hover:shadow-elegant hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98] ${
         isHighlighted 
           ? "border-gold border-2" 
           : "border-border hover:border-gold"
       }`}
     >
       <div className="flex flex-col items-center text-center space-y-4">
-        <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-300 ${
+        <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
           isHighlighted 
             ? "bg-gold/20 text-gold" 
-            : "bg-secondary text-muted-foreground group-hover:bg-gold/10 group-hover:text-gold"
+            : "bg-secondary text-muted-foreground group-hover:bg-gold/10 group-hover:text-gold group-hover:scale-110"
         }`}>
           {icon}
         </div>
@@ -39,7 +40,7 @@ const ServiceCard = ({ icon, title, description, isHighlighted }: ServiceCardPro
           <TooltipTrigger asChild>
             <a
               href="tel:+351929075519"
-              className="text-gold text-body-sm font-medium tracking-wide hover:text-gold-light transition-colors duration-300 pt-2"
+              className="relative text-gold text-body-sm font-medium tracking-wide hover:text-gold-light transition-colors duration-300 pt-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
             >
               Consultar Preço
             </a>
@@ -127,7 +128,7 @@ const ServicesSection = () => {
     <section id="servicos" className="py-24 lg:py-32 bg-secondary/30">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-16 lg:mb-20 space-y-4">
+        <AnimateOnScroll animation="fade-up" className="text-center mb-16 lg:mb-20 space-y-4">
           <span className="text-gold text-body-sm tracking-[0.3em] uppercase font-medium">
             O que oferecemos
           </span>
@@ -137,18 +138,18 @@ const ServicesSection = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Experiência premium em cada detalhe
           </p>
-        </div>
+        </AnimateOnScroll>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
-            <div
+            <AnimateOnScroll
               key={service.title}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              animation="fade-up"
+              delay={index * 0.05}
             >
               <ServiceCard {...service} />
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

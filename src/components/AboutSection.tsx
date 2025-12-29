@@ -1,4 +1,5 @@
 import { Trophy } from "lucide-react";
+import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 
 const AboutSection = () => {
   return (
@@ -6,7 +7,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content Column */}
-          <div className="space-y-8 animate-fade-in">
+          <AnimateOnScroll animation="fade-right" className="space-y-8">
             <div className="space-y-4">
               <span className="text-gold text-body-sm tracking-[0.3em] uppercase font-medium">
                 Sobre o Salão
@@ -29,7 +30,7 @@ const AboutSection = () => {
             </p>
 
             {/* Award Card */}
-            <div className="mt-10 p-6 bg-card rounded-lg border-2 border-gold shadow-card">
+            <div className="mt-10 p-6 bg-card rounded-lg border-2 border-gold shadow-card hover:shadow-elegant transition-shadow duration-300">
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
                   <Trophy className="w-7 h-7 text-gold" />
@@ -44,25 +45,27 @@ const AboutSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </AnimateOnScroll>
 
           {/* Image Column */}
-          <div className="relative animate-fade-in-delay-1">
-            <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-elegant bg-secondary">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
-                    <span className="font-display text-3xl text-gold">SL</span>
+          <AnimateOnScroll animation="fade-left" delay={0.2}>
+            <div className="relative group">
+              <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-elegant bg-secondary">
+                <div className="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                  <div className="text-center p-8">
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+                      <span className="font-display text-3xl text-gold">SL</span>
+                    </div>
+                    <p className="text-muted-foreground text-body-sm tracking-wide">
+                      Imagem do Salão
+                    </p>
                   </div>
-                  <p className="text-muted-foreground text-body-sm tracking-wide">
-                    Imagem do Salão
-                  </p>
                 </div>
               </div>
+              {/* Decorative element */}
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-2 border-gold rounded-lg -z-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2" />
             </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 border-2 border-gold rounded-lg -z-10" />
-          </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>
