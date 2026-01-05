@@ -1,0 +1,31 @@
+# Este arquivo mantém a estrutura de pastas no git
+# 
+# Estrutura de pastas para imagens:
+# 
+# public/images/
+# ├── hero/              - Imagens de fundo da seção hero
+# ├── about/             - Imagens do salão
+# ├── gallery/           - Galeria de trabalhos
+# │   ├── alisamentos/
+# │   ├── loiros/
+# │   ├── morenas/
+# │   ├── cortes-femininos/
+# │   └── cortes-masculinos/
+# ├── specialties/       - Imagens das especialidades
+# ├── team/              - Fotos da equipe
+# ├── partners/          - Logos dos parceiros
+# ├── blog/              - Imagens dos artigos
+# ├── instagram/         - Posts do Instagram
+# └── og/                - Imagens Open Graph / SEO
+#
+# Formatos recomendados:
+# - WebP para melhor compressão e qualidade
+# - JPG como fallback
+# - PNG para logos com transparência
+#
+# Dimensões recomendadas:
+# - Hero: 1920x1080
+# - Gallery: 800x800 (quadrado)
+# - Team: 400x400 (quadrado)
+# - Blog: 800x450 (16:9)
+# - OG Image: 1200x630
