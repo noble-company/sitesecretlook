@@ -57,11 +57,11 @@ export const SPECIALTIES_IMAGES = {
     }
   },
   loiros: {
-    src: '/images/specialties/loiros.webp',
+    src: '/images/gallery/loiros/loiros_01.jpg',
     alt: 'Loiros perfeitos e iluminados'
   },
   morenas: {
-    src: '/images/specialties/morenas.webp',
+    src: '/images/gallery/loiros/morenas_05.jpg',
     alt: 'Morenas iluminadas com brilho natural'
   },
   cortesFemininos: {
@@ -69,7 +69,7 @@ export const SPECIALTIES_IMAGES = {
     alt: 'Cortes femininos modernos e elegantes'
   },
   cortesMasculinos: {
-    src: '/images/specialties/cortes-masculinos.webp',
+    src: '/images/gallery/cortes-masculinos/antes_depois_01.jpg',
     alt: 'Cortes masculinos estilosos'
   }
 } as const;
@@ -90,19 +90,19 @@ export interface GalleryImage {
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   // Alisamentos
-  { id: 1, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento-1.webp', alt: 'Alisamento liso perfeito', label: 'Alisamento 1' },
-  { id: 2, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento-2.webp', alt: 'Alisamento com brilho intenso', label: 'Alisamento 2' },
-  { id: 3, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento-3.webp', alt: 'Alisamento definitivo', label: 'Alisamento 3' },
+  { id: 1, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_01.jpg', alt: 'Alisamento liso perfeito', label: 'Alisamento 1' },
+  { id: 2, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_02.jpg', alt: 'Alisamento com brilho intenso', label: 'Alisamento 2' },
+  { id: 3, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_05.jpg', alt: 'Alisamento definitivo', label: 'Alisamento 3' },
   
   // Loiros
-  { id: 4, category: 'loiros', src: '/images/gallery/loiros/loiro-1.webp', alt: 'Loiro platinado elegante', label: 'Loiro Platinado' },
-  { id: 5, category: 'loiros', src: '/images/gallery/loiros/loiro-2.webp', alt: 'Loiro mel natural', label: 'Loiro Mel' },
-  { id: 6, category: 'loiros', src: '/images/gallery/loiros/loiro-3.webp', alt: 'Loiro champagne sofisticado', label: 'Loiro Champagne' },
+  { id: 4, category: 'loiros', src: '/images/gallery/loiros/loiros_02.jpg', alt: 'Loiro platinado elegante', label: 'Loiro Platinado' },
+  { id: 5, category: 'loiros', src: '/images/gallery/loiros/loiros_01.jpg', alt: 'Loiro mel natural', label: 'Loiro Mel' },
+  { id: 6, category: 'loiros', src: '/images/gallery/loiros/loiros_03.jpg', alt: 'Loiro champagne sofisticado', label: 'Loiro Champagne' },
   
   // Morenas
-  { id: 7, category: 'morenas', src: '/images/gallery/morenas/morena-1.webp', alt: 'Morena iluminada com reflexos', label: 'Morena Iluminada' },
-  { id: 8, category: 'morenas', src: '/images/gallery/morenas/morena-2.webp', alt: 'Chocolate quente intenso', label: 'Chocolate Quente' },
-  { id: 9, category: 'morenas', src: '/images/gallery/morenas/morena-3.webp', alt: 'Castanho com mechas sutis', label: 'Castanho Mechas' },
+  { id: 7, category: 'morenas', src: '/images/gallery/morenas/morenas_01.jpg', alt: 'Morena iluminada com reflexos', label: 'Morena Iluminada' },
+  { id: 8, category: 'morenas', src: '/images/gallery/morenas/morenas_02.jpg', alt: 'Chocolate quente intenso', label: 'Chocolate Quente' },
+  { id: 9, category: 'morenas', src: '/images/gallery/morenas/morenas_05.jpg', alt: 'Castanho com mechas sutis', label: 'Castanho Mechas' },
   
   // Cortes Femininos
   { id: 10, category: 'cortes-femininos', src: '/images/gallery/cortes-femininos/corte-fem-1.webp', alt: 'Corte long bob moderno', label: 'Long Bob' },
@@ -125,19 +125,19 @@ export interface TeamMemberImage {
 
 export const TEAM_IMAGES: Record<string, TeamMemberImage> = {
   enzoTani: {
-    src: '/images/team/enzo-tani.webp',
+    src: '/images/team/enzotani.jpg',
     alt: 'Enzo Tani - Master Hair Stylist & Founder'
   },
   ivoTavares: {
-    src: '/images/team/ivo-tavares.webp',
+    src: '/images/team/ivotavares.jpg',
     alt: 'Ivo Tavares - Senior Colorist'
   },
   lenitaDias: {
-    src: '/images/team/lenita-dias.webp',
+    src: '/images/team/lenitadias.jpg',
     alt: 'Lenita Dias - Especialista em Loiros'
   },
   gabrielFelix: {
-    src: '/images/team/gabriel-felix.webp',
+    src: '/images/team/gabrielfelix.jpg',
     alt: 'Gabriel Félix - Hairstylist'
   }
 } as const;
