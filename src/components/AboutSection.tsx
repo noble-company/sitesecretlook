@@ -9,24 +9,19 @@ const AboutSection = () => {
           {/* Content Column */}
           <AnimateOnScroll animation="fade-right" className="space-y-8">
             <div className="space-y-4">
-              <span className="text-gold text-body-sm tracking-[0.3em] uppercase font-medium">
-                Sobre o Salão
-              </span>
-              <h2 className="font-display text-display-lg lg:text-display-xl text-foreground">
-                Excelência desde 2018
-              </h2>
+              <span className="text-gold text-body-sm tracking-[0.3em] uppercase font-medium">Sobre o Salão</span>
+              <h2 className="font-display text-display-lg lg:text-display-xl text-foreground">Excelência desde 2012</h2>
             </div>
 
             <p className="text-muted-foreground text-body lg:text-lg leading-relaxed">
-              O Secret Look é um salão de referência em Lisboa, especializado em alisamentos de luxo, 
-              loiros perfeitos e morenas iluminadas. Combinamos técnica europeia de ponta com 
-              atendimento personalizado, proporcionando uma experiência única de beleza e sofisticação.
+              O Secret Look é um salão de referência em Lisboa, especializado em alisamentos de luxo, loiros perfeitos e
+              morenas iluminadas. Combinamos técnica europeia de ponta com atendimento personalizado, proporcionando uma
+              experiência única de beleza e sofisticação.
             </p>
 
             <p className="text-muted-foreground text-body lg:text-lg leading-relaxed">
-              Nossa equipa de profissionais altamente qualificados está comprometida em realçar 
-              a beleza natural de cada cliente, utilizando os melhores produtos e as técnicas 
-              mais avançadas do mercado.
+              Nossa equipa de profissionais altamente qualificados está comprometida em realçar a beleza natural de cada
+              cliente, utilizando os melhores produtos e as técnicas mais avançadas do mercado.
             </p>
 
             {/* Award Card */}
@@ -36,12 +31,8 @@ const AboutSection = () => {
                   <Trophy className="w-7 h-7 text-gold" />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg lg:text-xl text-foreground">
-                    Troféu Destaque na Europa
-                  </h3>
-                  <p className="text-muted-foreground text-body-sm">
-                    Premiados consecutivamente de 2018 a 2025
-                  </p>
+                  <h3 className="font-display text-lg lg:text-xl text-foreground">Troféu Destaque na Europa</h3>
+                  <p className="text-muted-foreground text-body-sm">Premiados consecutivamente de 2018 a 2025</p>
                 </div>
               </div>
             </div>
@@ -56,9 +47,7 @@ const AboutSection = () => {
                     <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
                       <span className="font-display text-3xl text-gold">SL</span>
                     </div>
-                    <p className="text-muted-foreground text-body-sm tracking-wide">
-                      Imagem do Salão
-                    </p>
+                    <p className="text-muted-foreground text-body-sm tracking-wide">Imagem do Salão</p>
                   </div>
                 </div>
               </div>
