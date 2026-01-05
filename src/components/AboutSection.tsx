@@ -1,5 +1,6 @@
 import { Trophy } from "lucide-react";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
+import { ABOUT_IMAGES } from "@/lib/images";
 
 const AboutSection = () => {
   return (
@@ -42,14 +43,28 @@ const AboutSection = () => {
           <AnimateOnScroll animation="fade-left" delay={0.2}>
             <div className="relative group">
               <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-elegant bg-secondary">
-                <div className="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
-                      <span className="font-display text-3xl text-gold">SL</span>
-                    </div>
-                    <p className="text-muted-foreground text-body-sm tracking-wide">Imagem do Salão</p>
-                  </div>
-                </div>
+                <img
+                  src={ABOUT_IMAGES.salon.src}
+                  alt={ABOUT_IMAGES.salon.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="w-full h-full flex items-center justify-center">
+                          <div class="text-center p-8">
+                            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+                              <span class="font-display text-3xl text-gold">SL</span>
+                            </div>
+                            <p class="text-muted-foreground text-body-sm tracking-wide">Imagem do Salão</p>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
               </div>
               {/* Decorative element */}
               <div className="absolute -bottom-6 -left-6 w-32 h-32 border-2 border-gold rounded-lg -z-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2" />

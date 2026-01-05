@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 import BeforeAfterSlider from "./BeforeAfterSlider";
+import { SPECIALTIES_IMAGES } from "@/lib/images";
 
 const specialties = [
   {
@@ -8,7 +9,7 @@ const specialties = [
     title: "Alisamentos de Luxo",
     description: "Técnica exclusiva reconhecida em toda a Europa. Resultados duradouros com máximo cuidado e proteção dos fios. Especialistas certificados com anos de experiência.",
     benefits: ["Liso perfeito", "Brilho intenso", "Longa duração", "Sem danos"],
-    imageAlt: "Alisamento Premium",
+    imageKey: "alisamentos" as const,
     reverse: false,
     hasSlider: true,
   },
@@ -17,7 +18,7 @@ const specialties = [
     title: "Loiros Perfeitos",
     description: "Coloração profissional com técnicas avançadas para loiros luminosos e saudáveis. Produtos premium que protegem e fortalecem os fios durante todo o processo.",
     benefits: ["Tom personalizado", "Brilho natural", "Manutenção fácil", "Proteção total"],
-    imageAlt: "Loiro Perfeito",
+    imageKey: "loiros" as const,
     reverse: true,
     hasSlider: false,
   },
@@ -26,7 +27,7 @@ const specialties = [
     title: "Morenas Iluminadas",
     description: "Iluminação sofisticada que realça a beleza natural dos cabelos escuros. Reflexos estratégicos que criam profundidade e movimento com resultado natural.",
     benefits: ["Reflexos naturais", "Profundidade", "Versatilidade", "Elegância"],
-    imageAlt: "Morena Iluminada",
+    imageKey: "morenas" as const,
     reverse: false,
     hasSlider: false,
   },
@@ -65,12 +66,35 @@ const SpecialtiesSection = () => {
                   <BeforeAfterSlider />
                 ) : (
                   <div className="relative aspect-[3/2] bg-secondary rounded-lg overflow-hidden group">
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-charcoal to-foreground transition-transform duration-500 group-hover:scale-105">
+                    <img
+                      src={
+                        specialty.imageKey === 'loiros' 
+                          ? SPECIALTIES_IMAGES.loiros.src 
+                          : specialty.imageKey === 'morenas' 
+                            ? SPECIALTIES_IMAGES.morenas.src 
+                            : '/placeholder.svg'
+                      }
+                      alt={
+                        specialty.imageKey === 'loiros' 
+                          ? SPECIALTIES_IMAGES.loiros.alt 
+                          : specialty.imageKey === 'morenas' 
+                            ? SPECIALTIES_IMAGES.morenas.alt 
+                            : specialty.title
+                      }
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'flex';
+                      }}
+                    />
+                    <div className="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-charcoal to-foreground">
                       <span className="text-gold font-display text-xl lg:text-2xl text-center px-4">
-                        {specialty.imageAlt}
+                        {specialty.title}
                       </span>
                     </div>
-                    <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
                 )}
               </AnimateOnScroll>
