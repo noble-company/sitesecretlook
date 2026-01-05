@@ -61,7 +61,7 @@ export const SPECIALTIES_IMAGES = {
     alt: 'Loiros perfeitos e iluminados'
   },
   morenas: {
-    src: '/images/gallery/loiros/morenas_05.jpg',
+    src: '/images/gallery/morenas/morenas_05.jpg',
     alt: 'Morenas iluminadas com brilho natural'
   },
   cortesFemininos: {
@@ -78,7 +78,8 @@ export const SPECIALTIES_IMAGES = {
 // GALLERY SECTION
 // Para adicionar novas imagens, basta adicionar um novo objeto ao array
 // ============================================
-export type GalleryCategory = 'todos' | 'alisamentos' | 'loiros' | 'morenas' | 'cortes-femininos' | 'cortes-masculinos';
+export type GalleryCategory = 'todos' | 'alisamentos' | 'loiros' | 'morenas' | 'cortes-masculinos';
+// Nota: 'cortes-femininos' removido temporariamente - sem imagens disponíveis
 
 export interface GalleryImage {
   id: number;
@@ -89,30 +90,32 @@ export interface GalleryImage {
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
-  // Alisamentos
+  // Alisamentos (5 imagens disponíveis)
   { id: 1, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_01.jpg', alt: 'Alisamento liso perfeito', label: 'Alisamento 1' },
   { id: 2, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_02.jpg', alt: 'Alisamento com brilho intenso', label: 'Alisamento 2' },
-  { id: 3, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_05.jpg', alt: 'Alisamento definitivo', label: 'Alisamento 3' },
+  { id: 3, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_03.jpg', alt: 'Alisamento brasileiro', label: 'Alisamento 3' },
+  { id: 4, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_04.jpg', alt: 'Alisamento orgânico', label: 'Alisamento 4' },
+  { id: 5, category: 'alisamentos', src: '/images/gallery/alisamentos/alisamento_05.jpg', alt: 'Alisamento definitivo', label: 'Alisamento 5' },
   
-  // Loiros
-  { id: 4, category: 'loiros', src: '/images/gallery/loiros/loiros_02.jpg', alt: 'Loiro platinado elegante', label: 'Loiro Platinado' },
-  { id: 5, category: 'loiros', src: '/images/gallery/loiros/loiros_01.jpg', alt: 'Loiro mel natural', label: 'Loiro Mel' },
-  { id: 6, category: 'loiros', src: '/images/gallery/loiros/loiros_03.jpg', alt: 'Loiro champagne sofisticado', label: 'Loiro Champagne' },
+  // Loiros (5 imagens disponíveis)
+  { id: 6, category: 'loiros', src: '/images/gallery/loiros/loiros_01.jpg', alt: 'Loiro mel natural', label: 'Loiro Mel' },
+  { id: 7, category: 'loiros', src: '/images/gallery/loiros/loiros_02.jpg', alt: 'Loiro platinado elegante', label: 'Loiro Platinado' },
+  { id: 8, category: 'loiros', src: '/images/gallery/loiros/loiros_03.jpg', alt: 'Loiro champagne sofisticado', label: 'Loiro Champagne' },
+  { id: 9, category: 'loiros', src: '/images/gallery/loiros/loiros_04.jpg', alt: 'Loiro dourado', label: 'Loiro Dourado' },
+  { id: 10, category: 'loiros', src: '/images/gallery/loiros/loiros_05.jpg', alt: 'Loiro natural', label: 'Loiro Natural' },
   
-  // Morenas
-  { id: 7, category: 'morenas', src: '/images/gallery/morenas/morenas_01.jpg', alt: 'Morena iluminada com reflexos', label: 'Morena Iluminada' },
-  { id: 8, category: 'morenas', src: '/images/gallery/morenas/morenas_02.jpg', alt: 'Chocolate quente intenso', label: 'Chocolate Quente' },
-  { id: 9, category: 'morenas', src: '/images/gallery/morenas/morenas_05.jpg', alt: 'Castanho com mechas sutis', label: 'Castanho Mechas' },
+  // Morenas (5 imagens disponíveis)
+  { id: 11, category: 'morenas', src: '/images/gallery/morenas/morenas_01.jpg', alt: 'Morena iluminada com reflexos', label: 'Morena Iluminada' },
+  { id: 12, category: 'morenas', src: '/images/gallery/morenas/morenas_02.jpg', alt: 'Chocolate quente intenso', label: 'Chocolate Quente' },
+  { id: 13, category: 'morenas', src: '/images/gallery/morenas/morenas_03.jpg', alt: 'Morena chocolate', label: 'Chocolate' },
+  { id: 14, category: 'morenas', src: '/images/gallery/morenas/morenas_04.jpg', alt: 'Castanho iluminado', label: 'Castanho' },
+  { id: 15, category: 'morenas', src: '/images/gallery/morenas/morenas_05.jpg', alt: 'Castanho com mechas sutis', label: 'Castanho Mechas' },
   
-  // Cortes Femininos
-  { id: 10, category: 'cortes-femininos', src: '/images/gallery/cortes-femininos/corte-fem-1.webp', alt: 'Corte long bob moderno', label: 'Long Bob' },
-  { id: 11, category: 'cortes-femininos', src: '/images/gallery/cortes-femininos/corte-fem-2.webp', alt: 'Corte em camadas com movimento', label: 'Camadas' },
-  { id: 12, category: 'cortes-femininos', src: '/images/gallery/cortes-femininos/corte-fem-3.webp', alt: 'Franja curtain bangs', label: 'Curtain Bangs' },
+  // Cortes Masculinos (2 imagens disponíveis)
+  { id: 16, category: 'cortes-masculinos', src: '/images/gallery/cortes-masculinos/antes_depois_01.jpg', alt: 'Antes e depois corte masculino', label: 'Antes/Depois 1' },
+  { id: 17, category: 'cortes-masculinos', src: '/images/gallery/cortes-masculinos/antes_depois_02.jpg', alt: 'Transformação corte masculino', label: 'Antes/Depois 2' },
   
-  // Cortes Masculinos
-  { id: 13, category: 'cortes-masculinos', src: '/images/gallery/cortes-masculinos/corte-masc-1.webp', alt: 'Corte degradê moderno', label: 'Degradê' },
-  { id: 14, category: 'cortes-masculinos', src: '/images/gallery/cortes-masculinos/corte-masc-2.webp', alt: 'Corte texturizado', label: 'Texturizado' },
-  { id: 15, category: 'cortes-masculinos', src: '/images/gallery/cortes-masculinos/corte-masc-3.webp', alt: 'Corte clássico executivo', label: 'Executivo' },
+  // Nota: Cortes Femininos removidos temporariamente - pasta vazia
 ];
 
 // ============================================

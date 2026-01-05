@@ -1,30 +1,21 @@
 import { useState, useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight, ZoomIn, Loader2 } from "lucide-react";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
+import { GALLERY_IMAGES, type GalleryCategory } from "@/lib/images";
 
-const categories = [
+const categories: { id: GalleryCategory; label: string }[] = [
   { id: "todos", label: "Todos" },
   { id: "alisamentos", label: "Alisamentos" },
   { id: "loiros", label: "Loiros" },
   { id: "morenas", label: "Morenas" },
-  { id: "cortes-femininos", label: "Cortes Femininos" },
   { id: "cortes-masculinos", label: "Cortes Masculinos" },
 ];
 
-const galleryItems = [
-  { id: 1, category: "alisamentos", height: "tall", label: "Alisamento 1" },
-  { id: 2, category: "loiros", height: "short", label: "Loiro 1" },
-  { id: 3, category: "morenas", height: "medium", label: "Morena 1" },
-  { id: 4, category: "cortes-femininos", height: "tall", label: "Corte Feminino 1" },
-  { id: 5, category: "alisamentos", height: "medium", label: "Alisamento 2" },
-  { id: 6, category: "loiros", height: "short", label: "Loiro 2" },
-  { id: 7, category: "cortes-masculinos", height: "medium", label: "Corte Masculino 1" },
-  { id: 8, category: "morenas", height: "tall", label: "Morena 2" },
-  { id: 9, category: "loiros", height: "medium", label: "Loiro 3" },
-  { id: 10, category: "alisamentos", height: "short", label: "Alisamento 3" },
-  { id: 11, category: "cortes-femininos", height: "medium", label: "Corte Feminino 2" },
-  { id: 12, category: "cortes-masculinos", height: "tall", label: "Corte Masculino 2" },
-];
+// Usar as imagens do arquivo centralizado
+const galleryItems = GALLERY_IMAGES.map((img, index) => ({
+  ...img,
+  height: ["tall", "medium", "short"][index % 3] as "tall" | "medium" | "short",
+}));
 
 const heightClasses = {
   short: "h-48",
@@ -154,8 +145,19 @@ const GallerySection = () => {
                 }}
                 aria-label={`Ver ${item.label} em tamanho grande`}
               >
-                {/* Placeholder with hover zoom */}
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-muted flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                {/* Imagem real com hover zoom */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                {/* Fallback placeholder */}
+                <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-muted hidden items-center justify-center">
                   <span className="text-gold/60 font-display text-lg">
                     {item.label}
                   </span>
@@ -221,16 +223,18 @@ const GallerySection = () => {
 
           {/* Image Container */}
           <div
-            className="max-w-5xl max-h-[85vh] w-full aspect-[3/4] lg:aspect-[4/3] bg-gradient-to-br from-charcoal to-muted rounded-lg flex items-center justify-center relative transition-opacity duration-300"
+            className="max-w-5xl max-h-[85vh] w-full relative transition-opacity duration-300 flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
             style={{ opacity: isLoading ? 0.5 : 1 }}
           >
             {isLoading && (
-              <Loader2 className="absolute w-10 h-10 text-gold animate-spin" aria-label="A carregar" />
+              <Loader2 className="absolute w-10 h-10 text-gold animate-spin z-10" aria-label="A carregar" />
             )}
-            <span className="text-gold font-display text-2xl">
-              {filteredItems[currentIndex]?.label}
-            </span>
+            <img
+              src={filteredItems[currentIndex]?.src}
+              alt={filteredItems[currentIndex]?.alt}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            />
           </div>
         </div>
       )}
