@@ -1,12 +1,13 @@
+import { forwardRef } from "react";
 import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const LocationSection = () => {
+const LocationSection = forwardRef<HTMLElement>((_, ref) => {
   const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Rua+Pinheiro+Chagas+76A+Lisboa";
   const embedMapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.8!2d-9.1456!3d38.7323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19331a61e4f1fd%3A0x0!2sRua%20Pinheiro%20Chagas%2076A%2C%20Lisboa!5e0!3m2!1spt-PT!2spt!4v1640000000000!5m2!1spt-PT!2spt";
 
   return (
-    <section id="localizacao" className="py-24 lg:py-32 bg-background">
+    <section ref={ref} id="localizacao" className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center mb-16 lg:mb-20 space-y-4">
@@ -112,6 +113,8 @@ const LocationSection = () => {
       </div>
     </section>
   );
-};
+});
+
+LocationSection.displayName = "LocationSection";
 
 export default LocationSection;
