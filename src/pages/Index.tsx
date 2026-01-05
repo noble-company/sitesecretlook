@@ -11,12 +11,11 @@ import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import ScrollToTop from "@/components/ScrollToTop";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "sonner";
 
 const Index = () => {
   return (
-    <TooltipProvider>
+    <>
       {/* Skip to main content link for accessibility */}
       <a href="#main-content" className="skip-link">
         Saltar para conteúdo
@@ -40,7 +39,7 @@ const Index = () => {
       <FloatingContact />
       <ScrollToTop />
       <Toaster position="bottom-center" richColors />
-    </TooltipProvider>
+    </>
   );
 };
 

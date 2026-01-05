@@ -1,6 +1,7 @@
+import { forwardRef } from "react";
 import { MapPin, Phone, Clock, Instagram, Facebook } from "lucide-react";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
@@ -25,7 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contacto" role="contentinfo" className="bg-primary text-secondary">
+    <footer ref={ref} id="contacto" role="contentinfo" className="bg-primary text-secondary">
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Column 1 - Brand */}
@@ -120,24 +121,21 @@ const Footer = () => {
             <p className="text-secondary/50 text-body-sm">
               © {currentYear} Secret Look Lisboa. Todos os direitos reservados.
             </p>
-            <div className="flex items-center gap-6">
-              {socialLinks.map((social) => (
-                <a
-                  key={`footer-${social.label}`}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-secondary/50 hover:text-gold transition-colors duration-300 text-body-sm"
-                >
-                  @secretlooklisboa
-                </a>
-              ))}
-            </div>
+            <a
+              href="https://instagram.com/secretlooklisboa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary/50 hover:text-gold transition-colors duration-300 text-body-sm"
+            >
+              @secretlooklisboa
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
