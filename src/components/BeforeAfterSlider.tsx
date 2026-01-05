@@ -1,17 +1,24 @@
 import { useState, useRef, useCallback } from "react";
+import { SPECIALTIES_IMAGES } from "@/lib/images";
 
 interface BeforeAfterSliderProps {
   beforeLabel?: string;
   afterLabel?: string;
+  beforeImage?: string;
+  afterImage?: string;
   className?: string;
 }
 
 const BeforeAfterSlider = ({
   beforeLabel = "ANTES",
   afterLabel = "DEPOIS",
+  beforeImage = SPECIALTIES_IMAGES.alisamentos.before.src,
+  afterImage = SPECIALTIES_IMAGES.alisamentos.after.src,
   className = "",
 }: BeforeAfterSliderProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const [beforeLoaded, setBeforeLoaded] = useState(false);
+  const [afterLoaded, setAfterLoaded] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -50,18 +57,38 @@ const BeforeAfterSlider = ({
       onTouchEnd={handleMouseUp}
     >
       {/* Before Image (Background) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-muted to-charcoal flex items-center justify-center">
-        <span className="text-muted-foreground font-display text-xl">
-          Antes
-        </span>
+      <div className="absolute inset-0">
+        {!beforeLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-muted to-charcoal flex items-center justify-center">
+            <span className="text-muted-foreground font-display text-xl">Antes</span>
+          </div>
+        )}
+        <img
+          src={beforeImage}
+          alt="Antes do tratamento"
+          className="w-full h-full object-cover"
+          onLoad={() => setBeforeLoaded(true)}
+          onError={(e) => e.currentTarget.style.display = 'none'}
+        />
       </div>
 
       {/* After Image (Foreground - clipped) */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-gold/30 to-charcoal flex items-center justify-center"
+        className="absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
-        <span className="text-gold font-display text-xl">Depois</span>
+        {!afterLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-gold/30 to-charcoal flex items-center justify-center">
+            <span className="text-gold font-display text-xl">Depois</span>
+          </div>
+        )}
+        <img
+          src={afterImage}
+          alt="Depois do tratamento"
+          className="w-full h-full object-cover"
+          onLoad={() => setAfterLoaded(true)}
+          onError={(e) => e.currentTarget.style.display = 'none'}
+        />
       </div>
 
       {/* Labels */}
