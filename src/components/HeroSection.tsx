@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HERO_IMAGES } from "@/lib/images";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -30,21 +29,16 @@ const HeroSection = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Parallax background layer */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_hsl(0_0%_0%/0.4)_100%)]"
         style={{ 
-          backgroundImage: `url(${HERO_IMAGES.background.src})`,
           transform: `translateY(${scrollY * 0.3}px)`,
           willChange: 'transform'
         }}
       />
-      {/* Fallback gradient (shown behind image) */}
-      <div className="absolute inset-0 gradient-hero -z-10" />
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_hsl(0_0%_0%/0.6)_100%)]" />
 
       <div 
         className="container mx-auto px-6 lg:px-12 relative z-10 text-center"
