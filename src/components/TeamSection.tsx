@@ -1,4 +1,5 @@
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
+import { TEAM_IMAGES } from "@/lib/images";
 
 const teamMembers = [
   {
@@ -6,24 +7,28 @@ const teamMembers = [
     name: "Enzo Tani",
     role: "Master Hair Stylist",
     bio: "Especialista em alisamentos e coloração. Mais de 15 anos de experiência.",
+    imageKey: "enzoTani" as const,
   },
   {
     id: 2,
     name: "Ivo Tavares",
     role: "Colorista Profissional",
     bio: "Mestre em técnicas de coloração e mechas. Formação internacional.",
+    imageKey: "ivoTavares" as const,
   },
   {
     id: 3,
     name: "Lenita Dias",
     role: "Hair Designer",
     bio: "Especialista em cortes femininos e tendências de moda capilar.",
+    imageKey: "lenitaDias" as const,
   },
   {
     id: 4,
     name: "Gabriel Felix",
     role: "Barbeiro & Stylist",
     bio: "Expert em cortes masculinos, barbas e tratamentos masculinos.",
+    imageKey: "gabrielFelix" as const,
   },
 ];
 
@@ -47,11 +52,17 @@ const TeamSection = () => {
               delay={index * 0.1}
             >
               <div className="bg-card border border-border rounded-lg p-6 text-center hover:shadow-elegant hover:border-gold/50 hover:-translate-y-2 transition-all duration-300 group">
-                {/* Avatar Placeholder */}
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-charcoal to-muted overflow-hidden flex items-center justify-center group-hover:ring-2 group-hover:ring-gold group-hover:scale-105 transition-all duration-300">
-                  <span className="text-gold/60 text-xs text-center px-2">
-                    200x200
-                  </span>
+                {/* Team Member Photo */}
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-charcoal to-muted overflow-hidden group-hover:ring-2 group-hover:ring-gold group-hover:scale-105 transition-all duration-300">
+                  <img
+                    src={TEAM_IMAGES[member.imageKey]?.src || '/placeholder.svg'}
+                    alt={TEAM_IMAGES[member.imageKey]?.alt || member.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.src = '/placeholder.svg';
+                    }}
+                  />
                 </div>
 
                 {/* Info */}
