@@ -6,24 +6,15 @@ interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  isHighlighted?: boolean;
 }
 
-const ServiceCard = ({ icon, title, description, isHighlighted }: ServiceCardProps) => {
+const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
   return (
     <div
-      className={`group p-6 lg:p-8 bg-card rounded-lg border transition-all duration-300 hover:shadow-elegant hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98] ${
-        isHighlighted 
-          ? "border-gold border-2" 
-          : "border-border hover:border-gold"
-      }`}
+      className="group p-6 lg:p-8 bg-card rounded-lg border border-border transition-all duration-300 hover:shadow-elegant hover:-translate-y-2 hover:scale-[1.02] hover:border-gold active:scale-[0.98]"
     >
       <div className="flex flex-col items-center text-center space-y-4">
-        <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
-          isHighlighted 
-            ? "bg-gold/20 text-gold" 
-            : "bg-secondary text-muted-foreground group-hover:bg-gold/10 group-hover:text-gold group-hover:scale-110"
-        }`}>
+        <div className="w-14 h-14 rounded-full flex items-center justify-center bg-secondary text-muted-foreground transition-all duration-300 group-hover:bg-gold/10 group-hover:text-gold group-hover:scale-110">
           {icon}
         </div>
         
@@ -60,67 +51,56 @@ const ServicesSection = () => {
       icon: <Sparkles className="w-7 h-7" />,
       title: "Alisamentos Premium",
       description: "Especialidade da casa reconhecida em toda Europa",
-      isHighlighted: true,
     },
     {
       icon: <Palette className="w-7 h-7" />,
       title: "Madeixas & Coloração",
       description: "Técnicas avançadas para resultados naturais",
-      isHighlighted: false,
     },
     {
       icon: <Sun className="w-7 h-7" />,
       title: "Loiros Profissionais",
       description: "Loiros impecáveis e luminosos",
-      isHighlighted: true,
     },
     {
       icon: <Sunrise className="w-7 h-7" />,
       title: "Morenas Iluminadas",
       description: "Iluminação sofisticada e natural",
-      isHighlighted: true,
     },
     {
       icon: <Scissors className="w-7 h-7" />,
       title: "Corte Feminino",
       description: "Cortes personalizados para realçar sua beleza",
-      isHighlighted: false,
     },
     {
       icon: <User className="w-7 h-7" />,
       title: "Corte Masculino",
       description: "Estilo e modernidade para homens exigentes",
-      isHighlighted: false,
     },
     {
       icon: <Baby className="w-7 h-7" />,
       title: "Corte Infantil",
       description: "Ambiente acolhedor para os pequenos",
-      isHighlighted: false,
     },
     {
       icon: <Droplet className="w-7 h-7" />,
       title: "Tratamentos Capilares",
       description: "Reconstrução e hidratação profunda",
-      isHighlighted: false,
     },
     {
       icon: <Scissors className="w-7 h-7" />,
       title: "Barbeiro",
       description: "Barba e acabamentos impecáveis",
-      isHighlighted: false,
     },
     {
       icon: <Zap className="w-7 h-7" />,
       title: "Depilação",
       description: "Cuidado e conforto",
-      isHighlighted: false,
     },
     {
       icon: <Hand className="w-7 h-7" />,
       title: "Massagem Masculina",
       description: "Relaxamento e bem-estar",
-      isHighlighted: false,
     },
   ];
 
