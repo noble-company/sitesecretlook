@@ -26,8 +26,8 @@ const teamMembers = [
   {
     id: 4,
     name: "Gabriel Felix",
-    role: "Barbeiro & Stylist",
-    bio: "Expert em cortes masculinos, barbas e tratamentos masculinos.",
+    role: "",
+    bio: "Especialista em Alisamentos.",
     imageKey: "gabrielFelix" as const,
   },
 ];
