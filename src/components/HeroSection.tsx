@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BOOKING_URL } from "@/lib/constants";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -12,19 +13,6 @@ const HeroSection = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleScrollToContact = () => {
-    const element = document.getElementById("contacto");
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <section
@@ -64,9 +52,11 @@ const HeroSection = () => {
               variant="gold"
               size="lg"
               className="text-base md:text-lg tracking-wide hover:scale-105 active:scale-95 min-h-[48px]"
-              onClick={handleScrollToContact}
+              asChild
             >
-              Agende seu Horário
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                Agende seu Horário
+              </a>
             </Button>
           </div>
         </div>

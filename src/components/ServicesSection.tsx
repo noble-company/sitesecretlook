@@ -1,6 +1,7 @@
 import { Sparkles, Palette, Sun, Sunrise, Scissors, User, Baby, Droplet, Zap, Hand } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
+import { BOOKING_URL } from "@/lib/constants";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -30,14 +31,16 @@ const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
         <Tooltip>
           <TooltipTrigger asChild>
             <a
-              href="tel:+351929075519"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative text-gold text-body-sm font-medium tracking-wide hover:text-gold-light transition-colors duration-300 pt-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
             >
-              Consultar Preço
+              Agendar Online
             </a>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Ligue para consultar</p>
+            <p>Agendar online</p>
           </TooltipContent>
         </Tooltip>
       </div>
