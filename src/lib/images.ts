@@ -37,7 +37,7 @@ export const HERO_IMAGES = {
 // ============================================
 export const ABOUT_IMAGES = {
   salon: {
-    src: '/images/about/salao.webp',
+    src: '/images/about/salao.jpeg',
     alt: 'Interior do Salão Secret Look Lisboa'
   }
 } as const;
