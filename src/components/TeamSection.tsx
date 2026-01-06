@@ -5,14 +5,14 @@ const teamMembers = [
   {
     id: 1,
     name: "Enzo Tani",
-    role: "Master Hair Stylist",
-    bio: "Especialista em alisamentos e coloração. Mais de 15 anos de experiência.",
+    role: "Master em Corte Feminino, Barbeiro e Especialista em Alisamentos.",
+    bio: "",
     imageKey: "enzoTani" as const,
   },
   {
     id: 2,
     name: "Ivo Tavares",
-    role: "Coloremetrista Especializado em Loiros, Morena Iluminadas e Correcção de Cor",
+    role: "Coloremetrista Especializado em Loiros, Morena Iluminadas e Correcção de Cor.",
     bio: "",
     imageKey: "ivoTavares" as const,
   },
