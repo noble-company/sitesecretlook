@@ -12,8 +12,8 @@ const teamMembers = [
   {
     id: 2,
     name: "Ivo Tavares",
-    role: "Colorista Profissional",
-    bio: "Mestre em técnicas de coloração e mechas. Formação internacional.",
+    role: "Coloremetrista Especializado em Loiros, Morena Iluminadas e Correcção de Cor",
+    bio: "",
     imageKey: "ivoTavares" as const,
   },
   {
