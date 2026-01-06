@@ -19,8 +19,8 @@ const teamMembers = [
   {
     id: 3,
     name: "Lenita Dias",
-    role: "Hair Designer",
-    bio: "Especialista em Alisamentos, Corte Feminino e Extensões.",
+    role: "Especialista em Alisamentos, Corte Feminino e Extensões.",
+    bio: "",
     imageKey: "lenitaDias" as const,
   },
   {
