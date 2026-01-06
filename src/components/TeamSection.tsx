@@ -26,8 +26,8 @@ const teamMembers = [
   {
     id: 4,
     name: "Gabriel Felix",
-    role: "",
-    bio: "Especialista em Alisamentos.",
+    role: "Especialista em Alisamentos.",
+    bio: "",
     imageKey: "gabrielFelix" as const,
   },
 ];
