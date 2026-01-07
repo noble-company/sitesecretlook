@@ -1,4 +1,4 @@
-import { Sparkles, Palette, Sun, Sunrise, Scissors, User, Baby, Droplet, Zap, Hand } from "lucide-react";
+import { Sparkles, Search, Zap, Sun, Sunrise, Scissors, Baby } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 import { BOOKING_URL } from "@/lib/constants";
@@ -52,58 +52,38 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <Sparkles className="w-7 h-7" />,
-      title: "Alisamentos Premium",
-      description: "Especialidade da casa reconhecida em toda Europa",
+      title: "Alisamento",
+      description: "Todo o potencial de um alisamento com resultados duradores, sem agressões e sem surpresas indesejadas",
     },
     {
-      icon: <Palette className="w-7 h-7" />,
-      title: "Madeixas & Coloração",
-      description: "Técnicas avançadas para resultados naturais",
+      icon: <Search className="w-7 h-7" />,
+      title: "Diagnóstico",
+      description: "O resultado é um diagnóstico preciso, totalmente personalizado e sem erros de cálculo. Apenas resultados confiáveis",
+    },
+    {
+      icon: <Zap className="w-7 h-7" />,
+      title: "Madeixas e Coloração a Laser",
+      description: "Mais tecnologia, mais cuidado e resultados visivelmente superiores desde a primeira aplicação",
     },
     {
       icon: <Sun className="w-7 h-7" />,
       title: "Loiros Profissionais",
-      description: "Loiros impecáveis e luminosos",
+      description: "Um loiro elegante, atemporal e silenciosamente luxuoso",
     },
     {
       icon: <Sunrise className="w-7 h-7" />,
       title: "Morenas Iluminadas",
-      description: "Iluminação sofisticada e natural",
+      description: "O resultado é um cabelo iluminado com classe, presença e assinatura",
     },
     {
       icon: <Scissors className="w-7 h-7" />,
       title: "Corte Feminino",
-      description: "Cortes personalizados para realçar sua beleza",
-    },
-    {
-      icon: <User className="w-7 h-7" />,
-      title: "Corte Masculino",
-      description: "Estilo e modernidade para homens exigentes",
+      description: "Criamos cortes personalizados, para um visual leve, moderno e atemporal",
     },
     {
       icon: <Baby className="w-7 h-7" />,
       title: "Corte Infantil",
-      description: "Ambiente acolhedor para os pequenos",
-    },
-    {
-      icon: <Droplet className="w-7 h-7" />,
-      title: "Tratamentos Capilares",
-      description: "Reconstrução e hidratação profunda",
-    },
-    {
-      icon: <Scissors className="w-7 h-7" />,
-      title: "Barbeiro",
-      description: "Barba e acabamentos impecáveis",
-    },
-    {
-      icon: <Zap className="w-7 h-7" />,
-      title: "Depilação",
-      description: "Cuidado e conforto",
-    },
-    {
-      icon: <Hand className="w-7 h-7" />,
-      title: "Massagem Masculina",
-      description: "Relaxamento e bem-estar",
+      description: "Cortes feitos com cuidado, diversão e carinho, deixando os pequenos confortáveis e os pais tranquilos com o resultado",
     },
   ];
 
