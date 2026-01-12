@@ -201,6 +201,29 @@ export const INSTAGRAM_IMAGES = {
 } as const;
 
 // ============================================
+// TESTIMONIAL VIDEOS
+// ============================================
+export interface TestimonialVideo {
+  id: number;
+  src: string;
+  name?: string;
+  poster?: string;
+}
+
+export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
+  {
+    id: 1,
+    src: '/videos/testimonials/depoimento_01.mp4',
+    name: 'Depoimento 1',
+  },
+  {
+    id: 2,
+    src: '/videos/testimonials/depoimento_02.mp4',
+    name: 'Depoimento 2',
+  },
+];
+
+// ============================================
 // OG / SEO IMAGES
 // ============================================
 export const OG_IMAGES = {
@@ -246,6 +269,7 @@ export const IMAGES = {
   blog: BLOG_IMAGES,
   instagram: INSTAGRAM_IMAGES,
   og: OG_IMAGES,
+  testimonialVideos: TESTIMONIAL_VIDEOS,
 } as const;
 
 export default IMAGES;
