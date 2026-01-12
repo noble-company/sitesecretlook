@@ -63,7 +63,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-slow">
+      <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce-slow">
         <a
           href="#sobre"
           onClick={(e) => {
