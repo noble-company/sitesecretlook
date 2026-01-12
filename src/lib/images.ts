@@ -214,7 +214,7 @@ export const TESTIMONIAL_VIDEOS: TestimonialVideo[] = [
   {
     id: 1,
     src: '/videos/testimonials/depoimento_01.mp4',
-    name: 'Depoimento 1',
+    name: 'Luz Batalha',
   },
   {
     id: 2,
