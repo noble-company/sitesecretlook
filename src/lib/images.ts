@@ -48,11 +48,11 @@ export const ABOUT_IMAGES = {
 export const SPECIALTIES_IMAGES = {
   alisamentos: {
     before: {
-      src: '/images/gallery/antes_depois/antes.jpeg',
+      src: '/images/gallery/antes_depois/depois.jpeg',
       alt: 'Antes do alisamento'
     },
     after: {
-      src: '/images/gallery/antes_depois/depois.jpeg',
+      src: '/images/gallery/antes_depois/antes.jpeg',
       alt: 'Depois do alisamento - resultado perfeito'
     }
   },
