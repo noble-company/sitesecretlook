@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Star, Play, Pause } from "lucide-react";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
+import { TESTIMONIAL_VIDEOS } from "@/lib/images";
 
 const testimonials = [
   {
@@ -36,10 +37,39 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  // Video carousel state
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [isVideoAnimating, setIsVideoAnimating] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Text carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Pause video when changing slides
+  const handleVideoChange = (newIndex: number) => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+    setIsVideoAnimating(true);
+    setTimeout(() => {
+      setVideoIndex(newIndex);
+      setIsVideoAnimating(false);
+    }, 200);
+  };
+
+  const goToPreviousVideo = () => {
+    const newIndex = videoIndex === 0 ? TESTIMONIAL_VIDEOS.length - 1 : videoIndex - 1;
+    handleVideoChange(newIndex);
+  };
+
+  const goToNextVideo = () => {
+    const newIndex = videoIndex === TESTIMONIAL_VIDEOS.length - 1 ? 0 : videoIndex + 1;
+    handleVideoChange(newIndex);
+  };
+
+  // Text testimonials auto-rotation
   useEffect(() => {
     if (isPaused) return;
     
@@ -86,7 +116,69 @@ const TestimonialsSection = () => {
           </h2>
         </AnimateOnScroll>
 
-        {/* Carousel */}
+        {/* Video Carousel */}
+        <AnimateOnScroll animation="fade-up" delay={0.1}>
+          <div className="relative max-w-3xl mx-auto mb-16">
+            {/* Video Navigation Arrows */}
+            <button
+              onClick={goToPreviousVideo}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 text-muted-foreground hover:text-gold hover:scale-110 transition-all duration-300 z-10 min-h-[48px] min-w-[48px] flex items-center justify-center cursor-pointer"
+              aria-label="Vídeo anterior"
+            >
+              <ChevronLeft className="w-8 h-8" aria-hidden="true" />
+            </button>
+
+            <button
+              onClick={goToNextVideo}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 text-muted-foreground hover:text-gold hover:scale-110 transition-all duration-300 z-10 min-h-[48px] min-w-[48px] flex items-center justify-center cursor-pointer"
+              aria-label="Próximo vídeo"
+            >
+              <ChevronRight className="w-8 h-8" aria-hidden="true" />
+            </button>
+
+            {/* Video Container */}
+            <div className={`bg-card rounded-lg overflow-hidden shadow-card transition-opacity duration-200 ${isVideoAnimating ? 'opacity-0' : 'opacity-100'}`}>
+              <video
+                ref={videoRef}
+                key={TESTIMONIAL_VIDEOS[videoIndex]?.src}
+                src={TESTIMONIAL_VIDEOS[videoIndex]?.src}
+                poster={TESTIMONIAL_VIDEOS[videoIndex]?.poster}
+                controls
+                className="w-full aspect-video"
+                preload="metadata"
+              >
+                Seu navegador não suporta vídeos.
+              </video>
+              {TESTIMONIAL_VIDEOS[videoIndex]?.name && (
+                <div className="p-4 text-center">
+                  <p className="font-semibold text-foreground">
+                    {TESTIMONIAL_VIDEOS[videoIndex].name}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Video Dots Navigation */}
+            <div className="flex justify-center gap-2 mt-6" role="tablist" aria-label="Vídeos de depoimentos">
+              {TESTIMONIAL_VIDEOS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleVideoChange(i)}
+                  className={`h-2 rounded-full transition-all duration-300 hover:scale-110 min-h-[20px] min-w-[20px] flex items-center justify-center cursor-pointer ${
+                    i === videoIndex
+                      ? "bg-gold w-6"
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2"
+                  }`}
+                  role="tab"
+                  aria-selected={i === videoIndex}
+                  aria-label={`Ver vídeo ${i + 1} de ${TESTIMONIAL_VIDEOS.length}`}
+                />
+              ))}
+            </div>
+          </div>
+        </AnimateOnScroll>
+
+        {/* Text Testimonials Carousel */}
         <AnimateOnScroll animation="fade-up" delay={0.2}>
           <div 
             className="relative max-w-3xl mx-auto"
