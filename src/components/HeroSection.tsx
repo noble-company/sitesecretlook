@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/lib/constants";
+import { trackLead } from "@/lib/pixel";
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -54,7 +55,7 @@ const HeroSection = () => {
               className="text-base md:text-lg tracking-wide hover:scale-105 active:scale-95 min-h-[48px]"
               asChild
             >
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Agende seu Horário
               </a>
             </Button>

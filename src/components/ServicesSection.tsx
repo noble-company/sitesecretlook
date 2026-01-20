@@ -2,6 +2,7 @@ import { Sparkles, Search, Zap, Sun, Sunrise, Scissors, Baby } from "lucide-reac
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 import { BOOKING_URL } from "@/lib/constants";
+import { trackLead } from "@/lib/pixel";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -34,6 +35,7 @@ const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={trackLead}
               className="relative text-gold text-body-sm font-medium tracking-wide hover:text-gold-light transition-colors duration-300 pt-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
             >
               Agendar Online
