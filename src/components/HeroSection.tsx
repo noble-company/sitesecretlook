@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BOOKING_URL } from "@/lib/constants";
+import { BOOKING_URL, STORE_URL } from "@/lib/constants";
 import { trackLead } from "@/lib/pixel";
 
 const HeroSection = () => {
@@ -47,16 +47,26 @@ const HeroSection = () => {
             Mestres em Alisamentos, Loiros e Morenas Iluminadas
           </p>
 
-          {/* CTA Button */}
-          <div className="pt-6 md:pt-8 animate-fade-in-delay-2">
+          {/* CTA Buttons */}
+          <div className="pt-6 md:pt-8 animate-fade-in-delay-2 flex flex-col items-center gap-4">
             <Button
               variant="gold"
               size="lg"
-              className="text-base md:text-lg tracking-wide hover:scale-105 active:scale-95 min-h-[48px]"
+              className="w-64 md:w-72 text-base md:text-lg tracking-wide hover:scale-105 active:scale-95 min-h-[48px]"
               asChild
             >
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Agende seu Horário
+              </a>
+            </Button>
+            <Button
+              variant="gold"
+              size="lg"
+              className="w-64 md:w-72 text-base md:text-lg tracking-wide hover:scale-105 active:scale-95 min-h-[48px]"
+              asChild
+            >
+              <a href={STORE_URL} target="_blank" rel="noopener noreferrer">
+                Visitar a Loja
               </a>
             </Button>
           </div>
